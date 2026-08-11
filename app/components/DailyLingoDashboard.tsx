@@ -236,13 +236,7 @@ function StatusBar({
         >
           Level {level}
         </span>
-        <span
-          className="flex items-center gap-1 text-sm font-bold"
-          style={{ color: PALETTE.streakText }}
-        >
-          <span aria-hidden="true">🔥</span>
-          {streak} day streak
-        </span>
+      
       </div>
 
       <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-[#EFEAFB]">
