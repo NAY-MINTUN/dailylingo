@@ -217,11 +217,9 @@ function ConfettiBurst({ pieces }: { pieces: ConfettiPiece[] }) {
 
 function StatusBar({
   level,
-  streak,
   progressPercent,
 }: {
   level: number;
-  streak: number;
   progressPercent: number;
 }) {
   return (
@@ -229,15 +227,7 @@ function StatusBar({
       className="sticky top-0 z-10 px-5 pb-4 pt-6 backdrop-blur"
       style={{ backgroundColor: `${PALETTE.bg}E6` }}
     >
-      <div className="flex items-center justify-between">
-        <span
-          className="rounded-full px-3 py-1 text-sm font-bold"
-          style={{ backgroundColor: PALETTE.dayBg, color: PALETTE.dayText }}
-        >
-          Level {level}
-        </span>
       
-      </div>
 
       <div className="mt-3 h-3 w-full overflow-hidden rounded-full bg-[#EFEAFB]">
         <motion.div
@@ -381,7 +371,6 @@ export default function DailyLingoDashboard() {
   const [queue, setQueue] = useState<Puzzle[]>(() => shuffleArray(PUZZLE_POOL));
   const [queueIndex, setQueueIndex] = useState<number>(0);
   const [level, setLevel] = useState<number>(1);
-  const [streak, setStreak] = useState<number>(12);
   const [progressPercent, setProgressPercent] = useState<number>(35);
 
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
@@ -400,7 +389,6 @@ export default function DailyLingoDashboard() {
       setAnswerState("correct");
       setIsPuzzleSolved(true);
       setConfettiPieces(buildConfettiPieces(28));
-      setStreak((prev) => prev + 1);
       setProgressPercent((prev) => (prev + 25 >= 100 ? 100 : prev + 25));
     } else {
       setAnswerState("incorrect");
@@ -437,7 +425,7 @@ export default function DailyLingoDashboard() {
         className="relative mx-auto min-h-screen w-full max-w-md pb-8"
         style={{ backgroundColor: PALETTE.bg }}
       >
-        <StatusBar level={level} streak={streak} progressPercent={progressPercent} />
+        
 
         <main className="relative px-5 pt-2">
           <h1 className="mb-4 text-2xl font-extrabold text-[#3F3A54]">Fill in the blank</h1>
